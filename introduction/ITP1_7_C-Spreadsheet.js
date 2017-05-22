@@ -2,7 +2,7 @@ process.stdin.resume();
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', function(chunk) {
   var sum = [];
-  var lines = chunk.split('\n');
+  var lines = chunk.trim().split('\n');
   lines.shift();
   lines.some(function(line) {
     var arr = line.split(' ').map(Number);
