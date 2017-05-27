@@ -1,8 +1,15 @@
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', function(chunk) {
-  var lines = chunk.split('\n');
-  var line = lines[0].split(' ').map(Number);
-  var n = line[0], m = line[1], l = line[2];
-  console.log(n, m, l, line);
+  var b = chunk.split('\n').map(function(s){return s.split(' ').map(Number);});
+  var n = b[0][0], m = b[0][1], l = b[0][2];
+  b.shift();
+  var a = b.splice(0, n);
+  for(var i = 0; i < n; i++) {
+    for(var j = 0; j < l; j++) {
+      var c = 0;
+      for(var k = 0; k < m; k++) c += a[i][k] * b[k][j];
+      console.log(c);
+    }
+  }
 });
