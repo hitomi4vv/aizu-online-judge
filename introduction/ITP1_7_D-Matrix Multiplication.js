@@ -5,11 +5,12 @@ process.stdin.on('data', function(chunk) {
   var n = b[0][0], m = b[0][1], l = b[0][2];
   b.shift();
   var a = b.splice(0, n);
-  for(var i = 0; i < n; i++) {
+  var s = '';
+  for(var i = 0; i < n; i++)
     for(var j = 0; j < l; j++) {
       var c = 0;
       for(var k = 0; k < m; k++) c += a[i][k] * b[k][j];
-      console.log(c);
+      s += c + (j+1 == l? '\n':' ');
     }
-  }
+  console.log(s.trim());
 });
