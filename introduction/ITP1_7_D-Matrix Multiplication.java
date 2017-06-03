@@ -3,7 +3,8 @@ public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt(), m = sc.nextInt(), l = sc.nextInt(), i, j, k;
-    int[][] a = new int[n][m], b = new int[m][l], c = new int[n][l];
+    int[][] a = new int[n][m], b = new int[m][l];
+    long c[][] = new long[n][l];
     for(i = 0; i < n; i++) for(j = 0; j < m; j++) a[i][j] = sc.nextInt();
     for(i = 0; i < m; i++) for(j = 0; j < l; j++) b[i][j] = sc.nextInt();
     for(i = 0; i < n; i++)
