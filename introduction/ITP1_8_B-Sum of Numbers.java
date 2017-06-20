@@ -4,7 +4,10 @@ public class Main {
     Scanner sc = new Scanner(System.in);
     String line;
     while(!(line = sc.nextLine()).equals("0")) {
-      System.out.println(line);
+      int sum = 0;
+      int[] arr = line.chars().map(x -> x-'0').toArray();
+      for(int i:arr) sum += i;
+      System.out.println(sum);
     }
   }
 }
