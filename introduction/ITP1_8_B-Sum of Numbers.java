@@ -5,8 +5,7 @@ public class Main {
     String line;
     while(!(line = sc.nextLine()).equals("0")) {
       int sum = 0;
-      int[] arr = line.chars().map(x -> x-'0').toArray();
-      for(int i:arr) sum += i;
+      for(int i = 0; i < line.length(); i++) sum += Character.getNumericValue(line.charAt(i));
       System.out.println(sum);
     }
   }
