@@ -1,3 +1,4 @@
 object Main extends App {
-  io.Source.stdin.getLines.toList.takeWhile(_!="-").map(println)
+  val lines = io.Source.stdin.getLines
+  for(s <- lines if s != "-") println(lines.take(lines.next.toInt).map(_.toInt).foldLeft(s)((t, h) => t.drop(h) + t.take(h)))
 }
