@@ -5,7 +5,7 @@ object Main extends App {
     val a = o(1).toInt
     val b = o(2).toInt+1
     val as = s slice(0, a)
-    val bs = s slice(b, s size)
+    val bs = s slice(b, s.length)
     o(0) match {
       case "print" => println(s slice(a,b))
       case "reverse" => s = as+(s slice(a,b)).reverse+bs
