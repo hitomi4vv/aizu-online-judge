@@ -11,6 +11,7 @@ int main() {
     d1 += fabs(d);
     d2 += pow(fabs(d), 2);
     d3 += pow(fabs(d), 3);
+    if(max < fabs(d)) max = fabs(d);
   }
   printf("%f\n%f\n%f\n%f\n", d1, sqrt(d2), cbrt(d3), max);
   return 0;
