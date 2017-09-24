@@ -7,11 +7,11 @@ int main() {
   for(i = 0; i < n; i++) scanf("%lf", &x[i]);
   for(i = 0; i < n; i++) scanf("%lf", &y[i]);
   for(i = 0; i < n; i++) {
-    d = x[i] - y[i];
-    d1 += fabs(d);
-    d2 += pow(fabs(d), 2);
-    d3 += pow(fabs(d), 3);
-    if(max < fabs(d)) max = fabs(d);
+    d = fabs(x[i] - y[i]);
+    d1 += d;
+    d2 += d * d;
+    d3 += d * d * d;
+    if(max < d) max = d;
   }
   printf("%f\n%f\n%f\n%f\n", d1, sqrt(d2), cbrt(d3), max);
   return 0;
