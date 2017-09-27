@@ -13,6 +13,6 @@ public class Program {
        d3 += d * d * d;
        if(max < d) max = d;
     }
-    Console.WriteLine(d1+"\n"+"\n"+Math.Sqrt(d2)+"\n"+Math.Pow(d3, 1/3.0)+"\n"+max);
+    Console.WriteLine(d1+"\n"+Math.Sqrt(d2)+"\n"+Math.Pow(d3, 1/3.0)+"\n"+max);
   }
 }
