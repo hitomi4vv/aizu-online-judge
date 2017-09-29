@@ -9,4 +9,4 @@ for(var i = 0; i < n; i++) {
   d3 += d * d * d;
   if(max < d) max = d;
 }
-console.log(d1+'\n'+Math.sqrt(d2)+'\n'+Math.cbrt(d3)+'\n'+max);
+console.log(d1+'\n'+Math.sqrt(d2)+'\n'+Math.pow(d3, 1/3.0)+'\n'+max);
