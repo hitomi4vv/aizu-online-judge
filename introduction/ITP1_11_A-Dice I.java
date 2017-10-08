@@ -3,7 +3,8 @@ public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Dice dice = new Dice(sc.nextLine().split(" "));
-    dice.roll();
+    char[] chars = sc.nextLine().toCharArray();
+    for(char c:chars) dice.roll(c);
   }
 }
 
@@ -12,7 +13,7 @@ class Dice {
   Dice(String[] labels) {
     this.labels = labels;
   }
-  public void roll() {
-    System.out.println(labels[0]);
+  public void roll(char dir) {
+    System.out.println(dir);
   }
 }
