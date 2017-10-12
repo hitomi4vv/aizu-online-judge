@@ -16,6 +16,7 @@ function Dice(labels) {
 var lines = require('fs').readFileSync('/dev/stdin', 'utf8').trim().split('\n');
 var labels = new Dice(lines[0].split(' ').map(Number)).labels;
 var dice = new Dice(lines[1].split(' ').map(Number));
+/*
 for(var i = 0; i < 6; i++) {
   if(labels[0] == dice.labels[i]) {
     while(labels[0] != dice.labels[0] || labels[1] != dice.labels[1]) dice.roll('NSEW'[Math.floor(Math.random()*4)]);
@@ -26,3 +27,4 @@ for(var i = 0; i < 6; i++) {
   }
 }
 console.log('No');
+*/
