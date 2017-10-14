@@ -12,6 +12,13 @@ Dice.prototype.roll = function(dir) {
   var l = this.labels;
   this.labels = [l[n[0]],l[n[1]],l[n[2]],l[n[3]],l[n[4]],l[n[5]]];
 }
+Dice.prototype.setDirection = function(l) {
+  for(var i = 0; i < 8; i++) {
+    if(this.labels[1] == l[1]) break;
+    this.roll("NW"[i%4/3|0]);
+  }
+  while(this.labels[0] != l[0]) dice.roll('W');
+}
 
 var lines = require('fs').readFileSync('/dev/stdin', 'utf8').trim().split('\n');
 var labels = new Dice(lines[0].split(' ').map(Number)).labels;
