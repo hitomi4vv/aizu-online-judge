@@ -18,20 +18,15 @@ Dice.prototype.setDirection = function(l) {
     this.roll("NW"[i%4/3|0]);
   }
   while(this.labels[0] != l[0]) dice.roll('W');
+  if(l.length < 3) return;
+  for(i = 0; i < 8; i++) {
+    if(this.labels[3] == l[3]) break;
+    this.roll("NW"[i%4/3|0]);
+  }
 }
 
 var lines = require('fs').readFileSync('/dev/stdin', 'utf8').trim().split('\n');
 var labels = new Dice(lines[0].split(' ').map(Number)).labels;
 var dice = new Dice(lines[1].split(' ').map(Number));
-/*
-for(var i = 0; i < 6; i++) {
-  if(labels[0] == dice.labels[i]) {
-    while(labels[0] != dice.labels[0] || labels[1] != dice.labels[1]) dice.roll('NSEW'[Math.floor(Math.random()*4)]);
-    if(labels.toString() === dice.labels.toString()) {
-      console.log('Yes');
-      return;
-    }
-  }
-}
-console.log('No');
-*/
+dice.setDirection(labels);
+console.log(labels.toString() == dice.labels.toString()? 'Yes':'No');
