@@ -26,6 +26,7 @@ Dice.prototype.setDirection = function(l) {
 }
 
 var lines = require('fs').readFileSync('/dev/stdin', 'utf8').trim().split('\n');
-for(var i = 0; i < lines[0]; i++) {
-
-}
+var n = lines[0];
+var dices = [];
+for(var i = 0; i < n; i++) dices.push(new Dice(lines[i+1].split(' ').map(Number)));
+console.log(dices);
