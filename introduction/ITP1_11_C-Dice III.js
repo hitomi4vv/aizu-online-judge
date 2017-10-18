@@ -17,7 +17,7 @@ Dice.prototype.setDirection = function(l) {
     if(this.labels[1] == l[1]) break;
     this.roll("NW"[i%4/3|0]);
   }
-  while(this.labels[0] != l[0]) dice.roll('W');
+  while(this.labels[0] != l[0]) this.roll('W');
   if(l.length < 3) return;
   for(i = 0; i < 8; i++) {
     if(this.labels[3] == l[3]) break;
