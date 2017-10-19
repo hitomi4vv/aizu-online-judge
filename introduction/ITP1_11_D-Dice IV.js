@@ -29,4 +29,14 @@ var lines = require('fs').readFileSync('/dev/stdin', 'utf8').trim().split('\n');
 var n = lines[0];
 var dices = [];
 for(var i = 0; i < n; i++) dices.push(new Dice(lines[i+1].split(' ').map(Number)));
-console.log(dices);
+for(var i = 0; i < n; i++) {
+  for(var j = 0; j < n; j++) {
+    if(i == j) continue;
+    dices[i].setDirection(dices[j].labels);
+    if(dices[i].labels.toString() != dices[j].labels.toString()) {
+      console.log('No');
+      return;
+    }
+  }
+}
+console.log('Yes');
