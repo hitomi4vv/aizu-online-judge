@@ -13,20 +13,16 @@ Dice.prototype.roll = function(dir) {
   this.labels = [l[n[0]],l[n[1]],l[n[2]],l[n[3]],l[n[4]],l[n[5]]];
 }
 Dice.prototype.setDirection = function(l) {
-  for(var i = 0; i < 8; i++) {
-    if(this.labels[1] == l[1]) break;
-    this.roll("NW"[i%4/3|0]);
+  var dice = new Dice(l);
+  var dirs = 'EEEENEEEENEEEENEEENEEEENNEEEE';
+  for(var i = 0; i < dirs.length; i++) {
+    if(this.labels.toString() == dice.labels.toString()) return true;
+    dice.roll(dirs[i]);
   }
-  while(this.labels[0] != l[0]) this.roll('W');
-  if(l.length < 3) return;
-  for(i = 0; i < 8; i++) {
-    if(this.labels[3] == l[3]) break;
-    this.roll("NW"[i%4/3|0]);
-  }
+  return false;
 }
 
 var lines = require('fs').readFileSync('/dev/stdin', 'utf8').trim().split('\n');
 var labels = new Dice(lines[0].split(' ').map(Number)).labels;
 var dice = new Dice(lines[1].split(' ').map(Number));
-dice.setDirection(labels);
-console.log(labels.toString() == dice.labels.toString()? 'Yes':'No');
+console.log(dice.setDirection(labels)? 'Yes':'No');
