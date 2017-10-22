@@ -6,11 +6,11 @@ class Dice
 
   def roll(dir)
     a, b, c, d, e, f = @labels
-    @labels = case dir
-    when 'N' then [b, f, c, d, a, e]
-    when 'S' then [e, a, c, d, f, b]
-    when 'E' then [d, b, a, f, e, c]
-    when 'W' then [c, b, f, a, e, d]
+    case dir
+    when 'N' then @labels = [b, f, c, d, a, e]
+    when 'S' then @labels = [e, a, c, d, f, b]
+    when 'E' then @labels = [d, b, a, f, e, c]
+    when 'W' then @labels = [c, b, f, a, e, d]
     end
   end
 
