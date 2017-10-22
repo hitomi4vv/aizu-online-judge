@@ -5,6 +5,13 @@ class Dice
   end
 
   def roll(dir)
+    a, b, c, d, e, f = @labels
+    @labels = case dir
+    when 'N' then [b, f, c, d, a, e]
+    when 'S' then [e, a, c, d, f, b]
+    when 'E' then [d, b, a, f, e, c]
+    when 'W' then [c, b, f, a, e, d]
+    end
   end
 
   def top
