@@ -1,5 +1,13 @@
 function Dice(labels) {
   this.labels = labels;
+  this.patterns = [];
+  var all = function(l) {return [[l[0], l[1], l[2], l[3], l[4], l[5]], [l[0], l[2], l[4], l[1], l[3], l[5]], [l[0], l[4], l[3], l[2], l[1], l[5]], [l[0], l[3], l[1], l[4], l[2], l[5]]];};
+  for(var i = 0; i < 7; i++) {
+    this.roll(i<4?'N':'W');
+    if(i==5) continue;
+    this.patterns = this.patterns.concat(all(this.labels));
+  }
+  console.log(this.patterns);
 }
 Dice.prototype.roll = function(dir) {
   var n;
