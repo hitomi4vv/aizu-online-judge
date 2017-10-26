@@ -1,5 +1,12 @@
 function Dice(labels) {
   this.labels = labels;
+  this.patterns = [];
+  var all = function(l) {return [[l[0], l[1], l[2], l[3], l[4], l[5]], [l[0], l[2], l[4], l[1], l[3], l[5]], [l[0], l[4], l[3], l[2], l[1], l[5]], [l[0], l[3], l[1], l[4], l[2], l[5]]];};
+  for(var i = 0; i < 7; i++) {
+    this.roll(i<4?'N':'W');
+    if(i==5) continue;
+    this.patterns = this.patterns.concat(all(this.labels));
+  }
 }
 Dice.prototype.roll = function(dir) {
   var n;
@@ -12,17 +19,12 @@ Dice.prototype.roll = function(dir) {
   var l = this.labels;
   this.labels = [l[n[0]],l[n[1]],l[n[2]],l[n[3]],l[n[4]],l[n[5]]];
 }
-Dice.prototype.setDirection = function(l) {
-  var dice = new Dice(l);
-  var dirs = 'EEEENEEEENEEEENEEENEEEENNEEEE';
-  for(var i = 0; i < dirs.length; i++) {
-    if(this.labels.toString() == dice.labels.toString()) return true;
-    dice.roll(dirs[i]);
-  }
-  return false;
-}
 
 var lines = require('fs').readFileSync('/dev/stdin', 'utf8').trim().split('\n');
-var labels = new Dice(lines[0].split(' ').map(Number)).labels;
-var dice = new Dice(lines[1].split(' ').map(Number));
-console.log(dice.setDirection(labels)? 'Yes':'No');
+var dice = new Dice(lines[0].split(' ').map(Number));
+for(var i = 0; i < dice.patterns.length; i++)
+  if(dice.patterns[i].join(' ') == lines[1].toString()) {
+    console.log('Yes');
+    return;
+  }
+console.log('No');
