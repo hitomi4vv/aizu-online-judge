@@ -7,6 +7,7 @@ function Dice(labels) {
     if(i==5) continue;
     this.patterns = this.patterns.concat(all(this.labels));
   }
+  // TODO: Remove duplicate labels from patterns
 }
 Dice.prototype.roll = function(dir) {
   var n;
