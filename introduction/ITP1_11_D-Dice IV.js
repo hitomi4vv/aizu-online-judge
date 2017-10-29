@@ -7,13 +7,13 @@ function Dice(labels) {
     if(i==5) continue;
     this.patterns = this.patterns.concat(all(this.labels));
   }
-  for(var i = 0; i < this.patterns.length; i++) {
+  for(i = 0; i < this.patterns.length; i++) {
     for(var j = 0; j < this.patterns.length; j++) {
       if(i==j) continue;
       if(this.patterns[i].toString() == this.patterns[j].toString()) this.patterns[j] = [];
     }
   }
-  this.patterns = this.patterns.filter(x => x.toString() != '');
+  this.patterns = this.patterns.filter(function(v) {return v.toString() != '';});
 }
 Dice.prototype.roll = function(dir) {
   var n;
