@@ -2,13 +2,15 @@ function Dice(labels) {
   this.labels = labels;
   this.patterns = [];
   var all = function(l) {return [[l[0], l[1], l[2], l[3], l[4], l[5]], [l[0], l[2], l[4], l[1], l[3], l[5]], [l[0], l[4], l[3], l[2], l[1], l[5]], [l[0], l[3], l[1], l[4], l[2], l[5]]];};
-  for(var i = 0; i < 7; i++) {
+  var i, j;
+  for(i = 0; i < 7; i++) {
     this.roll(i<4?'N':'W');
     if(i==5) continue;
     this.patterns = this.patterns.concat(all(this.labels));
   }
-  for(i = 0; i < this.patterns.length; i++) {
-    for(var j = 0; j < this.patterns.length; j++) {
+  var len = this.patterns.length;
+  for(i = 0; i < len; i++) {
+    for(j = 0; j < len; j++) {
       if(i==j) continue;
       if(this.patterns[i].toString() == this.patterns[j].toString()) this.patterns[j] = [];
     }
