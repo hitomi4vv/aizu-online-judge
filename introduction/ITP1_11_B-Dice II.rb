@@ -21,7 +21,7 @@ class Dice
 end
 
 dice = Dice.new(gets.split.map(&:to_i))
-gets.split('').each do | v |
-  dice.roll(v)
+gets.chomp.to_i.times do
+  a, b = gets.chomp.split.map(&:to_i)
+  puts a, b
 end
-puts dice.top
