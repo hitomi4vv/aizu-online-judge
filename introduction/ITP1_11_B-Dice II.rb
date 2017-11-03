@@ -2,6 +2,7 @@ class Dice
 
   def initialize(labels)
     @labels = labels
+    @patterns = []
   end
 
   def roll(dir)
@@ -22,6 +23,6 @@ end
 
 dice = Dice.new(gets.split.map(&:to_i))
 gets.chomp.to_i.times do
-  a, b = gets.chomp.split.map(&:to_i)
-  puts a, b
+  t, f = gets.chomp.split.map(&:to_i)
+  puts t f;
 end
