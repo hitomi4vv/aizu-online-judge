@@ -3,7 +3,13 @@ class Dice
   def initialize(labels)
     @labels = labels
     @patterns = []
-    @patterns.concat(all(@labels))
+    7.times do |i|
+      roll(i<4?'N':'W')
+      if i == 5 then
+        next
+      end
+      @patterns.concat(all(@labels))
+    end
   end
 
   def roll(dir)
@@ -31,7 +37,7 @@ class Dice
 end
 
 dice = Dice.new(gets.split.map(&:to_i))
-puts dice.patterns
+print dice.patterns
 gets.chomp.to_i.times do
   t, f = gets.chomp.split.map(&:to_i)
 end
