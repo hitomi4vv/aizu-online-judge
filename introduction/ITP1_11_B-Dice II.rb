@@ -37,7 +37,12 @@ class Dice
 end
 
 dice = Dice.new(gets.split.map(&:to_i))
-print dice.patterns
 gets.chomp.to_i.times do
   t, f = gets.chomp.split.map(&:to_i)
+  dice.patterns.each{|p|
+    if p.slice(0..1) == [t, f] then
+      puts p[2]
+      break
+    end
+  }
 end
