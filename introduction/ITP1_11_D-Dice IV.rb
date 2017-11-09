@@ -5,9 +5,7 @@ class Dice
     @patterns = []
     7.times do |i|
       roll(i<4?'N':'W')
-      if i == 5 then
-        next
-      end
+      next if i == 5
       @patterns.concat(all(@labels))
     end
     @patterns = @patterns.uniq
@@ -37,9 +35,12 @@ class Dice
 
 end
 
-n = gets.to_i
-dices = []
-n.times do
-  dices.push(Dice.new(gets.split.map(&:to_i)))
+patterns = []
+gets.to_i.times do
+  patterns.concat(Dice.new(gets.split.map(&:to_i)).patterns)
 end
-puts dices
+if patterns.size == patterns.uniq.size then
+  puts 'Yes'
+else
+  puts 'No'
+end

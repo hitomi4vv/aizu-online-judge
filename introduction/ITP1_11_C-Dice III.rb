@@ -5,9 +5,7 @@ class Dice
     @patterns = []
     7.times do |i|
       roll(i<4?'N':'W')
-      if i == 5 then
-        next
-      end
+      next if i == 5
       @patterns.concat(all(@labels))
     end
   end
