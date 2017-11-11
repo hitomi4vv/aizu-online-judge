@@ -1,13 +1,22 @@
 import java.util.*;
 class Dice {
   private String[] labels = new String[6];
-  private int[][] patterns = {};
+  private String[][] patterns = {};
   Dice(String[] labels) {
     this.labels = labels;
     for(int i = 0; i < 7; i++) {
       roll(i<4?'N':'W');
       if(i==5) continue;
+      this.patterns = getAllPattern(this.labels);
     }
+  }
+  private String[][] getAllPattern(String[] l) {
+    return new String[][] {
+        {l[0], l[1], l[2], l[3], l[4], l[5]},
+        {l[0], l[2], l[4], l[1], l[3], l[5]},
+        {l[0], l[4], l[3], l[2], l[1], l[5]},
+        {l[0], l[3], l[1], l[4], l[2], l[5]}
+    };
   }
   public void roll(char dir) {
     int n[] = null;
@@ -22,7 +31,7 @@ class Dice {
   public String getLabel(int n) {
     return labels[n];
   }
-  public int[][] getPatterns() {
+  public String[][] getPatterns() {
     return patterns;
   }
 }
