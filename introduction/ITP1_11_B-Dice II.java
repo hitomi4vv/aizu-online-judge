@@ -1,17 +1,20 @@
 import java.util.*;
 class Dice {
   private String[] labels = new String[6];
-  private String[][] patterns = {};
+  ArrayList<String[]> patterns = new ArrayList<>();
   Dice(String[] labels) {
     this.labels = labels;
     for(int i = 0; i < 7; i++) {
       roll(i<4?'N':'W');
       if(i==5) continue;
-      // TODO: array concat
+      setAllPattern(patterns, this.labels);
     }
   }
-  private String[][] getAllPattern(String[] l) {
-    return new String[][] {{l[0], l[1], l[2], l[3], l[4], l[5]}, {l[0], l[2], l[4], l[1], l[3], l[5]}, {l[0], l[4], l[3], l[2], l[1], l[5]}, {l[0], l[3], l[1], l[4], l[2], l[5]}};
+  private void setAllPattern(ArrayList<String[]> arr, String[] l) {
+    arr.add(new String[]{l[0], l[1], l[2], l[3], l[4], l[5]});
+    arr.add(new String[]{l[0], l[2], l[4], l[1], l[3], l[5]});
+    arr.add(new String[]{l[0], l[4], l[3], l[2], l[1], l[5]});
+    arr.add(new String[]{l[0], l[3], l[1], l[4], l[2], l[5]});
   }
   public void roll(char dir) {
     int n[] = null;
@@ -26,7 +29,7 @@ class Dice {
   public String getLabel(int n) {
     return labels[n];
   }
-  public String[][] getPatterns() {
+  public ArrayList<String[]> getPatterns() {
     return patterns;
   }
 }
@@ -34,6 +37,6 @@ public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Dice dice = new Dice(sc.nextLine().split(" "));
-    System.out.println(dice.getPatterns().length);
+    System.out.println(dice.getPatterns().size());
   }
 }
