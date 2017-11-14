@@ -39,7 +39,14 @@ public class Main {
     Dice dice = new Dice(sc.nextLine().split(" "));
     int n = Integer.parseInt(sc.nextLine());
     for(int i = 0; i < n; i++) {
-      System.out.println(sc.nextLine());
+      String[] line = sc.nextLine().split(" ");
+      for(int j = 0; j < dice.getPatterns().size(); j++) {
+        String[] p = dice.getPatterns().get(j);
+        if(line[0].equals(p[0]) && line[1].equals(p[1])) {
+          System.out.println(p[2]);
+          break;
+        }
+      }
     }
   }
 }
