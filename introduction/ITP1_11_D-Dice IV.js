@@ -13,7 +13,7 @@ function Dice(labels) {
       if(this.patterns[i].toString() == this.patterns[j].toString()) this.patterns[j] = [];
     }
   }
-  this.patterns = this.patterns.filter(function(v) {return v.toString() != '';});
+  this.patterns = this.patterns.filter(function(v) {return v.toString() !== '';});
 }
 Dice.prototype.roll = function(dir) {
   var n;
