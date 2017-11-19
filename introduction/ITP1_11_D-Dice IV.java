@@ -9,6 +9,7 @@ class Dice {
       if(i==5) continue;
       setAllPattern(patterns, this.labels);
     }
+    patterns = new ArrayList<>(new HashSet<>(patterns));
   }
   private void setAllPattern(ArrayList<String[]> arr, String[] l) {
     arr.add(new String[]{l[0], l[1], l[2], l[3], l[4], l[5]});
@@ -38,9 +39,16 @@ public class Main {
     Scanner sc = new Scanner(System.in);
     int n = Integer.parseInt(sc.nextLine());
     ArrayList<String[]> p = new ArrayList<>();
-    for(int i = 0; i < n; i++) {
-      p.addAll(new Dice(sc.nextLine().split(" ")).getPatterns());
-      System.out.println(p.size());
+    for(int i = 0; i < n; i++) p.addAll(new Dice(sc.nextLine().split(" ")).getPatterns());
+    for(int i = 0; i < p.size(); i++) {
+      for(int j = 0; j < p.size(); j++) {
+        if(i==j) continue;
+        if(String.join("", p.get(i)).equals(String.join("", p.get(j)))) {
+          System.out.println("No");
+          return;
+        }
+      }
     }
+    System.out.println("Yes");
   }
 }
