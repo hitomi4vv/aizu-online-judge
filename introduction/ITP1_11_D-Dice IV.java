@@ -9,7 +9,8 @@ class Dice {
       if(i==5) continue;
       setAllPattern(patterns, this.labels);
     }
-    patterns = new ArrayList<>(new HashSet<>(patterns));
+    // TODO: unique
+    // patterns = new ArrayList<>(new HashSet<>(patterns));
   }
   private void setAllPattern(ArrayList<String[]> arr, String[] l) {
     arr.add(new String[]{l[0], l[1], l[2], l[3], l[4], l[5]});
