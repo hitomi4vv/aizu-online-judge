@@ -1,22 +1,22 @@
 import java.util.*;
 class Dice {
-  private String[] labels = new String[6];
-  ArrayList<String[]> patterns = new ArrayList<>();
-  Dice(String[] labels) {
-    this.labels = labels;
+  private String label = "";
+  ArrayList<String> patterns = new ArrayList<>();
+  Dice(String label) {
+    this.label = label;
     for(int i = 0; i < 7; i++) {
       roll(i<4?'N':'W');
       if(i==5) continue;
-      setAllPattern(patterns, this.labels);
+      setAllPattern(patterns, this.label);
     }
-    // TODO: unique
-    // patterns = new ArrayList<>(new HashSet<>(patterns));
   }
-  private void setAllPattern(ArrayList<String[]> arr, String[] l) {
-    arr.add(new String[]{l[0], l[1], l[2], l[3], l[4], l[5]});
-    arr.add(new String[]{l[0], l[2], l[4], l[1], l[3], l[5]});
-    arr.add(new String[]{l[0], l[4], l[3], l[2], l[1], l[5]});
-    arr.add(new String[]{l[0], l[3], l[1], l[4], l[2], l[5]});
+  private void setAllPattern(ArrayList<String> arr, String l) {
+    /*
+    arr.add(new String{l[0], l[1], l[2], l[3], l[4], l[5]});
+    arr.add(new String{l[0], l[2], l[4], l[1], l[3], l[5]});
+    arr.add(new String{l[0], l[4], l[3], l[2], l[1], l[5]});
+    arr.add(new String{l[0], l[3], l[1], l[4], l[2], l[5]});
+    */
   }
   public void roll(char dir) {
     int n[] = null;
@@ -26,12 +26,14 @@ class Dice {
       case 'E': n = new int[]{3, 1, 0, 5, 4, 2}; break;
       case 'W': n = new int[]{2, 1, 5, 0, 4, 3}; break;
     }
-    labels = new String[]{labels[n[0]], labels[n[1]], labels[n[2]], labels[n[3]], labels[n[4]], labels[n[5]]};
+    String[] s = label.split(" ");
+    // labels = new String[]{labels[n[0]], labels[n[1]], labels[n[2]], labels[n[3]], labels[n[4]], labels[n[5]]};
   }
   public String getLabel(int n) {
-    return labels[n];
+    System.out.println(label);
+    return String.valueOf(label.charAt(n));
   }
-  public ArrayList<String[]> getPatterns() {
+  public ArrayList<String> getPatterns() {
     return patterns;
   }
 }
@@ -39,17 +41,7 @@ public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = Integer.parseInt(sc.nextLine());
-    ArrayList<String[]> p = new ArrayList<>();
-    for(int i = 0; i < n; i++) p.addAll(new Dice(sc.nextLine().split(" ")).getPatterns());
-    for(int i = 0; i < p.size(); i++) {
-      for(int j = 0; j < p.size(); j++) {
-        if(i==j) continue;
-        if(String.join("", p.get(i)).equals(String.join("", p.get(j)))) {
-          System.out.println("No");
-          return;
-        }
-      }
-    }
-    System.out.println("Yes");
+    Dice dice = new Dice(sc.nextLine());
+    System.out.println(dice.getLabel(1));
   }
 }
