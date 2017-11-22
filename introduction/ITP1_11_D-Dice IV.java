@@ -7,16 +7,17 @@ class Dice {
     for(int i = 0; i < 7; i++) {
       roll(i<4?'N':'W');
       if(i==5) continue;
-      setAllPattern(patterns, this.label);
+      setAllPattern(patterns, this.label.split(" "));
+    }
+    for(int i = 0; i< patterns.size(); i++) {
+      System.out.println(patterns.get(i));
     }
   }
-  private void setAllPattern(ArrayList<String> arr, String l) {
-    /*
-    arr.add(new String{l[0], l[1], l[2], l[3], l[4], l[5]});
-    arr.add(new String{l[0], l[2], l[4], l[1], l[3], l[5]});
-    arr.add(new String{l[0], l[4], l[3], l[2], l[1], l[5]});
-    arr.add(new String{l[0], l[3], l[1], l[4], l[2], l[5]});
-    */
+  private void setAllPattern(ArrayList<String> arr, String[] l) {
+    arr.add(String.join(" ", new String[]{l[0], l[1], l[2], l[3], l[4], l[5]}));
+    arr.add(String.join(" ", new String[]{l[0], l[2], l[4], l[1], l[3], l[5]}));
+    arr.add(String.join(" ", new String[]{l[0], l[4], l[3], l[2], l[1], l[5]}));
+    arr.add(String.join(" ", new String[]{l[0], l[3], l[1], l[4], l[2], l[5]}));
   }
   public void roll(char dir) {
     int n[] = null;
