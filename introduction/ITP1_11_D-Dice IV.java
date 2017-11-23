@@ -9,6 +9,8 @@ class Dice {
       if(i==5) continue;
       setAllPattern(patterns, this.label.split(" "));
     }
+    patterns = new ArrayList<>(new HashSet<>(patterns));
+    System.out.println(patterns.size());
     for(int i = 0; i< patterns.size(); i++) {
       System.out.println(patterns.get(i));
     }
@@ -43,6 +45,5 @@ public class Main {
     Scanner sc = new Scanner(System.in);
     int n = Integer.parseInt(sc.nextLine());
     Dice dice = new Dice(sc.nextLine());
-    System.out.println(dice.getLabel(1));
   }
 }
