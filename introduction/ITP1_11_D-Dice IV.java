@@ -10,10 +10,6 @@ class Dice {
       setAllPattern(patterns, this.label.split(" "));
     }
     patterns = new ArrayList<>(new HashSet<>(patterns));
-    System.out.println(patterns.size());
-    for(int i = 0; i< patterns.size(); i++) {
-      System.out.println(patterns.get(i));
-    }
   }
   private void setAllPattern(ArrayList<String> arr, String[] l) {
     arr.add(String.join(" ", new String[]{l[0], l[1], l[2], l[3], l[4], l[5]}));
@@ -30,7 +26,7 @@ class Dice {
       case 'W': n = new int[]{2, 1, 5, 0, 4, 3}; break;
     }
     String[] s = label.split(" ");
-    // labels = new String[]{labels[n[0]], labels[n[1]], labels[n[2]], labels[n[3]], labels[n[4]], labels[n[5]]};
+    label = String.join(" ", new String[]{s[n[0]], s[n[1]], s[n[2]], s[n[3]], s[n[4]], s[n[5]]});
   }
   public String getLabel(int n) {
     System.out.println(label);
