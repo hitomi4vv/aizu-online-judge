@@ -40,6 +40,17 @@ public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = Integer.parseInt(sc.nextLine());
-    Dice dice = new Dice(sc.nextLine());
+    ArrayList<String> p = new ArrayList<>();
+    for(int i = 0; i < n; i++) p.addAll(new Dice(sc.nextLine()).getPatterns());
+    for(int i = 0; i < p.size(); i++) {
+      for(int j = 0; j < p.size(); j++) {
+        if(i==j) continue;
+        if(p.get(i).equals(p.get(j))) {
+          System.out.println("No");
+          return;
+        }
+      }
+    }
+    System.out.println("Yes");
   }
 }
