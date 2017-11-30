@@ -1,9 +1,24 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 class Dice {
   public int[] labels;
+  public List<int[]> patterns = new List<int[]>();
   public Dice(int[] l) {
     labels = l;
+    for(int i = 0; i < 7; i++) {
+      roll(i<4?'N':'W');
+      if(i==5) continue;
+      patterns.AddRange(all(labels));
+    }
+  }
+  public List<int[]> all(int[] l) {
+    return new List<int[]> {
+      new int[]{l[0], l[1], l[2], l[3], l[4], l[5]},
+      new int[]{l[0], l[2], l[4], l[1], l[3], l[5]},
+      new int[]{l[0], l[4], l[3], l[2], l[1], l[5]},
+      new int[]{l[0], l[3], l[1], l[4], l[2], l[5]}
+    };
   }
   public void roll(char dir) {
     int[] n = {};
@@ -21,15 +36,7 @@ public class Program {
     Dice dice = new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray());
     int n = int.Parse(Console.ReadLine());
     for(int i = 0; i < n; i++) {
-      String[] line = sc.nextLine().split(" ");
-      for(int j = 0; j < dice.getPatterns().size(); j++) {
-        String[] p = dice.getPatterns().get(j);
-        if(line[0].equals(p[0]) && line[1].equals(p[1])) {
-          System.out.println(p[2]);
-          Console.WriteLine(dice.labels[2]);
-          break;
-        }
-      }
+      Console.WriteLine(dice.labels[2]);
     }
   }
 }
