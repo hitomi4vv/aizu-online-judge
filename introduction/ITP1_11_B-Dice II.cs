@@ -36,7 +36,13 @@ public class Program {
     Dice dice = new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray());
     int n = int.Parse(Console.ReadLine());
     for(int i = 0; i < n; i++) {
-      Console.WriteLine(dice.labels[2]);
+      int[] line = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+      for(int j = 0; j < dice.patterns.Count(); j++) {
+        int[] p = dice.patterns[j];
+        if(line[0] == p[0] && line[1] == p[1]) {
+          Console.WriteLine(p[2]);
+        }
+      }
     }
   }
 }
