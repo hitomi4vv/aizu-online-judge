@@ -2,17 +2,17 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 class Dice {
-  public int[] labels;
-  public List<int[]> patterns = new List<int[]>();
+  public int[] Labels;
+  public List<int[]> Patterns = new List<int[]>();
   public Dice(int[] l) {
-    labels = l;
+    Labels = l;
     for(int i = 0; i < 7; i++) {
-      roll(i<4?'N':'W');
+      Roll(i<4?'N':'W');
       if(i==5) continue;
-      patterns.AddRange(all(labels));
+      Patterns.AddRange(All(Labels));
     }
   }
-  public List<int[]> all(int[] l) {
+  public List<int[]> All(int[] l) {
     return new List<int[]> {
       new int[]{l[0], l[1], l[2], l[3], l[4], l[5]},
       new int[]{l[0], l[2], l[4], l[1], l[3], l[5]},
@@ -20,7 +20,7 @@ class Dice {
       new int[]{l[0], l[3], l[1], l[4], l[2], l[5]}
     };
   }
-  public void roll(char dir) {
+  public void Roll(char dir) {
     int[] n = {};
     switch(dir) {
       case 'N': n = new int[]{1, 5, 2, 3, 0, 4}; break;
@@ -28,7 +28,7 @@ class Dice {
       case 'E': n = new int[]{3, 1, 0, 5, 4, 2}; break;
       case 'W': n = new int[]{2, 1, 5, 0, 4, 3}; break;
     }
-    labels = new int[]{labels[n[0]], labels[n[1]], labels[n[2]], labels[n[3]], labels[n[4]], labels[n[5]]};
+    Labels = new int[]{Labels[n[0]], Labels[n[1]], Labels[n[2]], Labels[n[3]], Labels[n[4]], Labels[n[5]]};
   }
 }
 public class Program {
@@ -37,8 +37,8 @@ public class Program {
     int n = int.Parse(Console.ReadLine());
     for(int i = 0; i < n; i++) {
       int[] line = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
-      for(int j = 0; j < dice.patterns.Count(); j++) {
-        int[] p = dice.patterns[j];
+      for(int j = 0; j < dice.Patterns.Count(); j++) {
+        int[] p = dice.Patterns[j];
         if(line[0] == p[0] && line[1] == p[1]) {
           Console.WriteLine(p[2]);
         }
