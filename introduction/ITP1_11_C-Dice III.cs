@@ -36,6 +36,7 @@ public class Program {
     Dice dice = new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray());
     string line = Console.ReadLine();
     for(int i = 0; i < dice.Patterns.Count(); i++) {
+      Console.WriteLine(string.Join(" ", dice.Patterns[i]));
       Console.WriteLine(line);
     }
   }
