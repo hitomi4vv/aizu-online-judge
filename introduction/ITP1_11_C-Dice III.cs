@@ -36,7 +36,7 @@ public class Program {
     Dice dice = new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray());
     string line = Console.ReadLine();
     for(int i = 0; i < dice.Patterns.Count(); i++) {
-      if(string.Join(" ", dice.Patterns[i]).Equals(line)) {
+      if(string.Join(" ", dice.Patterns[i].Select(x => x.ToString()).ToArray()).Equals(line)) {
         Console.WriteLine("Yes");
         return;
       }
