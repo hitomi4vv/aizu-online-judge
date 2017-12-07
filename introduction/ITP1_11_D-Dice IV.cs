@@ -34,6 +34,9 @@ class Dice {
 public class Program {
   public static void Main() {
     int n = int.Parse(Console.ReadLine());
-    Console.WriteLine(n);
+    List<int[]> p = new List<int[]>();
+    for(int i = 0; i < n; i++) {
+      Dice dice = new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray());
+    }
   }
 }
