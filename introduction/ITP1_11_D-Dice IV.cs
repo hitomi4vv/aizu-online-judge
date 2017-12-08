@@ -36,7 +36,8 @@ public class Program {
     int n = int.Parse(Console.ReadLine());
     List<int[]> p = new List<int[]>();
     for(int i = 0; i < n; i++) {
-      Dice dice = new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray());
+      p.AddRange(new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray()).Patterns);
     }
+    Console.WriteLine(p.Count());
   }
 }
