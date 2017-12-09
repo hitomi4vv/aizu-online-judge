@@ -35,9 +35,17 @@ public class Program {
   public static void Main() {
     int n = int.Parse(Console.ReadLine());
     List<int[]> p = new List<int[]>();
-    for(int i = 0; i < n; i++) {
-      p.AddRange(new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray()).Patterns);
+    for(int i = 0; i < n; i++) p.AddRange(new Dice(Console.ReadLine().Split(' ').Select(int.Parse).ToArray()).Patterns);
+    for(int i = 0; i < p.Count(); i++) {
+      for(int j = 0; j < p.Count(); j++) {
+        if(i==j) continue;
+        // TODO: equal
+        if(p[i] == p[j]) {
+          Console.WriteLine("No");
+          return;
+        }
+      }
     }
-    Console.WriteLine(p.Count());
+    Console.WriteLine("Yes");
   }
 }
