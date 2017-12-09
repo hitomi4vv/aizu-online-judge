@@ -11,6 +11,7 @@ class Dice {
       if(i==5) continue;
       Patterns.AddRange(All(Labels));
     }
+    // TODO:Distinct
   }
   public List<int[]> All(int[] l) {
     return new List<int[]> {
@@ -39,8 +40,7 @@ public class Program {
     for(int i = 0; i < p.Count(); i++) {
       for(int j = 0; j < p.Count(); j++) {
         if(i==j) continue;
-        // TODO: equal
-        if(p[i] == p[j]) {
+        if(Enumerable.SequenceEqual(p[i], p[j])) {
           Console.WriteLine("No");
           return;
         }
