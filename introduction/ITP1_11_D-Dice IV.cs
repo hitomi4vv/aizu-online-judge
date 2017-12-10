@@ -11,7 +11,7 @@ class Dice {
       if(i==5) continue;
       Patterns.AddRange(All(Labels));
     }
-    // TODO:Distinct
+    Patterns = Patterns.Select(x => string.Join(" ", x)).Distinct().ToList().Select(x => x.Split(' ').Select(int.Parse).ToArray()).ToList();
   }
   public List<int[]> All(int[] l) {
     return new List<int[]> {
