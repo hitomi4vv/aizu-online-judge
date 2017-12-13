@@ -1,9 +1,7 @@
-import scala.io.StdIn
-object Main {
-  def main(args: Array[String]) = {
-    val dice = StdIn.readLine().split(" ").map(_.toInt)
-    val chars = StdIn.readLine().toCharArray
-    println(dice);
-    println(chars);
-  }
+case class Dice(var label:Array[String]) {
+}
+object Main extends App {
+  val dice = Dice(readLine.split(" "))
+//   dice.roll(readLine().toCharArray)
+  println(dice)
 }
