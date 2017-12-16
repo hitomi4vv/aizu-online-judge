@@ -11,4 +11,5 @@ case class Dice(var label:Array[String]) {
 object Main extends App {
   val dice = Dice(readLine.split(" "))
   dice.roll(readLine())
+  println(dice.label(0))
 }
