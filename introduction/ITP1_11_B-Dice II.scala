@@ -8,9 +8,9 @@ case class Dice(var label:Array[String]) {
     }
   def roll(dirs:String) =
     label = dirs.foldLeft(Array(0,1,2,3,4,5)) { (x,y) => rotate(y).map(x) }.map(label)
-  (0 until 7).foreach { i =>
+  for(i <- 0 to 7 if i != 5) {
     roll(if(i<4)"N" else "W");
-    println(label.mkString(" "))
+    println(i)
   }
 }
 object Main extends App {
