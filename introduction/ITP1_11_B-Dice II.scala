@@ -6,13 +6,18 @@ case class Dice(var label:Array[String]) {
       case 'E' => Array(3,1,0,5,4,2)
       case 'W' => Array(2,1,5,0,4,3)
     }
-  def roll(dirs:String) = label = dirs.foldLeft(Array(0,1,2,3,4,5)) { (x,y) => rotate(y).map(x) }.map(label)
+  def roll(dirs:String) =
+    label = dirs.foldLeft(Array(0,1,2,3,4,5)) { (x,y) => rotate(y).map(x) }.map(label)
+  (0 until 7).foreach { i =>
+    roll(if(i<4)"N" else "W");
+    println(label.mkString(" "))
+  }
 }
 object Main extends App {
   val dice = Dice(readLine.split(" "))
   val n = readInt
-  (0 until n).foreach { s =>
+  (0 until n).foreach { i =>
     val l = readLine.split(" ")
-    println(l)
+    println(l.mkString(" "))
   }
 }
