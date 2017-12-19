@@ -8,10 +8,12 @@ case class Dice(var label:Array[String]) {
     }
   def roll(dirs:String) =
     label = dirs.foldLeft(Array(0,1,2,3,4,5)) { (x,y) => rotate(y).map(x) }.map(label)
+  var patterns = List[Array[String]]()
   for(i <- 0 to 7 if i != 5) {
     roll(if(i<4)"N" else "W");
-    println(i)
+    patterns :+= label
   }
+  print(patterns.size)
 }
 object Main extends App {
   val dice = Dice(readLine.split(" "))
