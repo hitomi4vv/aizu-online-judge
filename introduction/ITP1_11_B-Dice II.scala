@@ -12,7 +12,6 @@ case class Dice(var label:Array[String]) {
   for(i <- 0 to 7 if i != 5) {
     roll(if(i<4)"N" else "W");
     patterns = patterns ::: Array(label(0), label(1), label(2), label(3), label(4), label(5)) :: Array(label(0), label(2), label(4), label(1), label(3), label(5)) :: Array(label(0), label(4), label(3), label(2), label(1), label(5)) :: Array(label(0), label(3), label(1), label(4), label(2), label(5)) :: Nil
-    println(patterns.size)
   }
 }
 object Main extends App {
@@ -20,6 +19,11 @@ object Main extends App {
   val n = readInt
   (0 until n).foreach { i =>
     val l = readLine.split(" ")
-    println(l.mkString(" "))
+    (0 until dice.patterns.size).foreach { j =>
+      val p = dice.patterns(j).slice(0, 2);
+      if(l.deep == p.deep) {
+        println(dice.patterns(j)(2))
+      }
+    }
   }
 }
