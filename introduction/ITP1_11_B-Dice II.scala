@@ -11,9 +11,9 @@ case class Dice(var label:Array[String]) {
   var patterns = List[Array[String]]()
   for(i <- 0 to 7 if i != 5) {
     roll(if(i<4)"N" else "W");
-    patterns :+= label
+    patterns = patterns ::: Array(label(0), label(1), label(2), label(3), label(4), label(5)) :: Array(label(0), label(2), label(4), label(1), label(3), label(5)) :: Array(label(0), label(4), label(3), label(2), label(1), label(5)) :: Array(label(0), label(3), label(1), label(4), label(2), label(5)) :: Nil
+    println(patterns.size)
   }
-  print(patterns.size)
 }
 object Main extends App {
   val dice = Dice(readLine.split(" "))
