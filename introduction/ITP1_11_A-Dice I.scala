@@ -6,10 +6,19 @@ case class Dice(var label:Array[String]) {
       case 'E' => Array(3,1,0,5,4,2)
       case 'W' => Array(2,1,5,0,4,3)
     }
-  def roll(dirs:String) = label = dirs.foldLeft(Array(0,1,2,3,4,5)) { (x,y) => rotate(y).map(x) }.map(label)
+  def roll(dirs:String) =
+    label = dirs.foldLeft(Array(0,1,2,3,4,5)) { (x,y) => rotate(y).map(x) }.map(label)
+  var patterns = List[Array[String]]()
+  for(i <- 0 to 7 if i != 5) {
+    roll(if(i<4)"N" else "W");
+    patterns = patterns ::: Array(label(0), label(1), label(2), label(3), label(4), label(5)) :: Array(label(0), label(2), label(4), label(1), label(3), label(5)) :: Array(label(0), label(4), label(3), label(2), label(1), label(5)) :: Array(label(0), label(3), label(1), label(4), label(2), label(5)) :: Nil
+  }
 }
 object Main extends App {
   val dice = Dice(readLine.split(" "))
-  dice.roll(readLine())
-  println(dice.label(0))
+  val n = readInt
+  (0 until n).foreach { i =>
+    val l = readLine.split(" ")
+    println(dice.patterns.find(x => x.slice(0, 2).deep == l.deep).map(n => n(2)))
+  }
 }
