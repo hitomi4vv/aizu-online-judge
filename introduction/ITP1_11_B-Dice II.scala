@@ -19,11 +19,6 @@ object Main extends App {
   val n = readInt
   (0 until n).foreach { i =>
     val l = readLine.split(" ")
-    (0 until dice.patterns.size).foreach { j =>
-      val p = dice.patterns(j).slice(0, 2);
-      if(l.deep == p.deep) {
-        println(dice.patterns(j)(2))
-      }
-    }
+    println(dice.patterns.find(x => x.slice(0, 2).deep == l.deep).map(n => n(2)).mkString)
   }
 }
