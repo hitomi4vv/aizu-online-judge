@@ -17,5 +17,5 @@ case class Dice(var label:Array[String]) {
 object Main extends App {
   val dice = Dice(readLine.split(" "))
   val l = readLine.split(" ")
-  println(dice.patterns.find(x => x.deep == l.deep).map(n => n(2)).mkString)
+  println(if(dice.patterns.find(x => x.deep == l.deep).isDefined) "Yes" else "No")
 }
