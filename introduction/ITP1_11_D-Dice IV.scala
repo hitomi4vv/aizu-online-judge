@@ -16,8 +16,9 @@ case class Dice(var label:Array[String]) {
 }
 object Main extends App {
   val n = readInt
+  var p = List[Array[String]]();
   (0 until n).foreach { i =>
-    val dice = Dice(readLine.split(" "))
-    println(dice.patterns.size)
+    p = p ::: Dice(readLine.split(" ")).patterns
+    println(p.size)
   }
 }
