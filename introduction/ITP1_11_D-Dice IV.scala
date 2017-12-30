@@ -19,5 +19,5 @@ object Main extends App {
   val n = readInt
   var p = List[Array[String]]();
   (0 until n).foreach { i => p = p ::: Dice(readLine.split(" ")).patterns }
-  println(p.size)
+  println(if (p.size != p.map(_.mkString("")).distinct.map(_.toArray.map(_.toString)).size) "No" else "Yes")
 }
