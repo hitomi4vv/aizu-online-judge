@@ -17,5 +17,9 @@ int main() {
 }
 
 void roll(struct Dice dice, char dir) {
-  printf("%c ", dir);
+  int n[6], l[6], i;
+  for(i=0; i<6; i++) {
+    l[i] = dice.labels[i];
+    printf("%d\n", l[i]);
+  }
 }
