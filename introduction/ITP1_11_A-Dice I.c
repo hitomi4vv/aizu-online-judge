@@ -49,6 +49,6 @@ int main() {
   for(i=0; i<6; i++) scanf("%d", &dice.labels[i]);
   scanf("%s", dirs);
   for(i=0; i<strlen(dirs); i++) roll(&dice, dirs[i]);
-  printf("%d", dice.labels[0]);
+  printf("%d\n", dice.labels[0]);
   return 0;
 }
