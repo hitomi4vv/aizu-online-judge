@@ -44,9 +44,12 @@ int n[6], l[6], i;
 
 int main() {
   Dice dice;
-  int i, n;
+  int i, n, t, f;
   for(i=0; i<6; i++) scanf("%d", &dice.labels[i]);
   scanf("%d", &n);
-  printf("%d\n", n);
+  for(i=0; i<n; i++) {
+    scanf("%d %d", &t, &f);
+    printf("%d %d\n", t, f);
+  }
   return 0;
 }
