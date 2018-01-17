@@ -4,7 +4,7 @@ typedef struct Dice {
   int labels[6];
 } Dice;
 void roll(struct Dice *dice, char dir) {
-int n[6], l[6], i;
+  int n[6], l[6], i;
   for(i=0; i<6; i++) l[i] = dice->labels[i];
   switch(dir) {
     case 'N':
