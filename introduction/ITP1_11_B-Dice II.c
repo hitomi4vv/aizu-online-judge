@@ -2,6 +2,7 @@
 
 typedef struct Dice {
   int labels[6];
+  int patterns[24][6];
 } Dice;
 void roll(struct Dice *dice, char dir) {
   int n[6], l[6], i;
