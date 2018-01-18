@@ -4,6 +4,17 @@ typedef struct Dice {
   int labels[6];
   int patterns[24][6];
 } Dice;
+void init(struct Dice *dice) {
+  int i;
+  for(i=0; i<7; i++) {
+    // roll(dice, i<4?'N':'W');
+    // if(i==5) continue;
+    // dice->patterns[j][0] = [l[0], l[1], l[2], l[3], l[4], l[5]];
+    // dice->patterns[j][1] = [l[0], l[2], l[4], l[1], l[3], l[5]];
+    // dice->patterns[j][2] = [l[0], l[4], l[3], l[2], l[1], l[5]];
+    // dice->patterns[j][3] = [l[0], l[3], l[1], l[4], l[2], l[5]];
+  }
+}
 void roll(struct Dice *dice, char dir) {
   int n[6], l[6], i;
   for(i=0; i<6; i++) l[i] = dice->labels[i];
