@@ -7,8 +7,8 @@ typedef struct Dice {
 void init(struct Dice *dice) {
   int i;
   for(i=0; i<7; i++) {
-    // roll(dice, i<4?'N':'W');
-    // if(i==5) continue;
+    roll(dice, i<4?'N':'W');
+    if(i==5) continue;
     // dice->patterns[j][0] = [l[0], l[1], l[2], l[3], l[4], l[5]];
     // dice->patterns[j][1] = [l[0], l[2], l[4], l[1], l[3], l[5]];
     // dice->patterns[j][2] = [l[0], l[4], l[3], l[2], l[1], l[5]];
@@ -16,6 +16,7 @@ void init(struct Dice *dice) {
   }
 }
 void roll(struct Dice *dice, char dir) {
+  printf("%c\n", dir);
   int n[6], l[6], i;
   for(i=0; i<6; i++) l[i] = dice->labels[i];
   switch(dir) {
@@ -58,6 +59,7 @@ int main() {
   Dice dice;
   int i, n, t, f;
   for(i=0; i<6; i++) scanf("%d", &dice.labels[i]);
+  init(&dice);
   scanf("%d", &n);
   for(i=0; i<n; i++) {
     scanf("%d %d", &t, &f);
