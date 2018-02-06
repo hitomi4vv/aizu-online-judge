@@ -1,20 +1,11 @@
 package main
-import (
-  "bufio"
-  "fmt"
-  "os"
-  "strings"
-  "strconv"
-)
-
+import "fmt"
 func main() {
-  sc := bufio.NewScanner(os.Stdin)
-  sc.Scan()
-  abc := strings.Split(sc.Text(), " ")
-  var a, _ = strconv.Atoi(abc[0])
-  var b, _ = strconv.Atoi(abc[1])
-  var c, _ = strconv.Atoi(abc[2])
-  if a < b && b < c {
+  abc := make([]int, 3)
+  for i:=0;i<3;i++ {
+    fmt.Scanf("%d",&abc[i])
+  }
+  if abc[0] < abc[1] && abc[1] < abc[2] {
     fmt.Println("Yes")
   } else {
     fmt.Println("No")
