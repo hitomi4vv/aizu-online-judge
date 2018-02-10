@@ -2,6 +2,7 @@ package main
 import (
   "fmt"
   "sort"
+  "strings"
 )
 func main() {
   abc := make([]int, 3)
@@ -9,5 +10,5 @@ func main() {
     fmt.Scanf("%d",&abc[i])
   }
   sort.Ints(abc)
-  fmt.Println(abc)
+  fmt.Println(strings.Trim(strings.Join(strings.Fields(fmt.Sprint(abc)), " "), "[]"))
 }
