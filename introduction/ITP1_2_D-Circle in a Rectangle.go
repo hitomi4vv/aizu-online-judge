@@ -10,5 +10,9 @@ func main() {
   sc.Scan()
   line := strings.Split(sc.Text(), " ")
   w, h, x, y, r := line[0], line[1], line[2], line[3], line[4]
-  fmt.Println(w, h, x, y, r)
+  if r <= x && x <= w - r && r <= y && y <= h - r {
+    fmt.Println("Yes")
+  } else {
+    fmt.Println("No")
+  }
 }
