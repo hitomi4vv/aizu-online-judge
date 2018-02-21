@@ -5,5 +5,9 @@ fun main(args:Array<String>) {
   val x = line[2]
   val y = line[3]
   val r = line[4]
-  println(w)
+  if (r <= x && x <= w - r && r <= y && y <= h - r) {
+    println("Yes")
+  } else {
+    println("No")
+  }
 }
