@@ -1,4 +1,5 @@
-use std::io;
 fn main() {
-  println!("Hello World");
+  for _ in 0..1000 {
+    println!("Hello World");
+  }
 }
