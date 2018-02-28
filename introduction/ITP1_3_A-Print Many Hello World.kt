@@ -1,3 +1,3 @@
 fun main(args:Array<String>) {
-  println("Hello World")
+  for (i in 0..999) println("Hello World")
 }
