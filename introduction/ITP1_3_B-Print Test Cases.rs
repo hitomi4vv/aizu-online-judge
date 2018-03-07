@@ -1,9 +1,9 @@
-use std::io;
+use std::io::*;
 fn main() {
-  let mut input = String::new();
-  io::stdin().read_line(&mut input).unwrap();
-  for i in 1.. {
-    if i == 10 { break; }
-    println!("Case {}: {}", i, i);
+  let stdin = stdin();
+  for (i, line) in stdin.lock().lines().enumerate() {
+    let x = line.unwrap();
+    if x == "0" { break; }
+    println!("Case {}: {}", i+1, x);
   }
 }
