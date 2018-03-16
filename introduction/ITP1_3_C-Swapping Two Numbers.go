@@ -8,7 +8,10 @@ import (
 
 func main() {
   sc := bufio.NewScanner(os.Stdin)
-  sc.Scan()
-  ab := strings.Split(sc.Text(), " ")
-  fmt.Println(ab)
+  for {
+    sc.Scan()
+    ab := strings.Split(sc.Text(), " ")
+    fmt.Println(ab)
+    if ab[0] == "0" { break }
+  }
 }
