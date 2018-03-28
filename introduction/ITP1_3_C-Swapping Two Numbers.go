@@ -1,17 +1,13 @@
 package main
-import (
-  "bufio"
-  "fmt"
-  "os"
-  "strings"
-)
+import "fmt"
 
 func main() {
-  sc := bufio.NewScanner(os.Stdin)
   for {
-    sc.Scan()
-    ab := strings.Split(sc.Text(), " ")
-    fmt.Println(ab)
-    if ab[0] == "0" { break }
+    var x, y int
+    fmt.Scan(&x)
+    fmt.Scan(&y)
+    if x + y == 0 { break }
+    if x > y { x, y = y, x }
+    fmt.Println(x, y)
   }
 }
