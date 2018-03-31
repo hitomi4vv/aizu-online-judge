@@ -6,10 +6,9 @@ func main() {
   fmt.Scan(&a)
   fmt.Scan(&b)
   fmt.Scan(&c)
-  fmt.Println(a, b, c)
   n := 0
-  for i:=a;i<b;i++ {
-    n++
+  for i:=a;i<=b;i++ {
+    if c % i == 0 { n++ }
   }
   fmt.Println(n);
 }
