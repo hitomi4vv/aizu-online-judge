@@ -3,6 +3,5 @@ fn main() {
   let mut input = String::new();
   io::stdin().read_line(&mut input).unwrap();
   let l:Vec<_> = input.split_whitespace().map(|s| s.parse::<i32>().unwrap()).collect();
-  let n = (l[0]..(l[1] + 1)).filter(|i| l[2] % i == 0).count();
-  println!("{}", n);
+  println!("{}", (l[0]..(l[1] + 1)).filter(|i| l[2] % i == 0).count());
 }
